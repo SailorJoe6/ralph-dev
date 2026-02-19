@@ -1,40 +1,23 @@
 # Agent Instructions
 
-This project uses **bd** (beads) for issue tracking. Run `bd onboard` to get started.
+## Issue Tracking
 
-## Quick Reference
+This project uses **bd (beads)** for issue tracking.
+Run `bd prime` for workflow context.
 
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --status in_progress  # Claim work
-bd close <id>         # Complete work
-bd sync               # Sync with git
-```
+**Quick reference:**
+- `bd ready` - Find unblocked work
+- `bd create "Title" --type task --priority 2` - Create issue
+- `bd close <id>` - Complete work
+- `bd sync` - Sync with git (run at session end)
 
-## Landing the Plane (Session Completion)
+For full workflow details: `bd prime`
 
-**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
+## Focal Point: The Ralph Submodule
+This repository is a wrapper project for the 'ralph' submodule.  The 'ralph' submodule is meant to be included as a submodule in many other projects.  As such, we need to keep it clean.  So, this wrapper project acts as a place to keep the .beads, .claude and .codex metadata useful for workin on 'ralph'.
 
-**MANDATORY WORKFLOW:**
+As such, the VAST majority of the work you will do will be in the 'ralph' submodule.  However, as the beads metada is stored in this wrapper project, you'll usually need to commit and push the ralph submodule first, then this wrapper module. 
 
-1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
-   ```bash
-   git pull --rebase
-   bd sync
-   git push
-   git status  # MUST show "up to date with origin"
-   ```
-5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
-7. **Hand off** - Provide context for next session
 
-**CRITICAL RULES:**
-- Work is NOT complete until `git push` succeeds
-- NEVER stop before pushing - that leaves work stranded locally
-- NEVER say "ready to push when you are" - YOU must push
-- If push fails, resolve and retry until it succeeds
+
 
